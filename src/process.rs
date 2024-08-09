@@ -275,7 +275,7 @@ impl Process {
                     flags: Mutex::new(OpenFlags::empty()),
                 })),
             ],
-            Arc::new(Mutex::new(String::from("./").into())),
+            Arc::new(Mutex::new(String::from("/").into())),
             Arc::new(AtomicI32::new(0o022)),
         ));
         new_process.set_file_path(path.clone());
@@ -649,7 +649,7 @@ impl Process {
                 .insert(new_task.id().as_u64(), FutexRobustList::default());
             return_id = new_task.id().as_u64();
         } else {
-            let mut cwd_src = Arc::new(Mutex::new(String::from("./").into()));
+            let mut cwd_src = Arc::new(Mutex::new(String::from("/").into()));
             let mut mask_src = Arc::new(AtomicI32::new(0o022));
             if clone_flags.contains(CloneFlags::CLONE_FS) {
                 cwd_src = Arc::clone(&self.fd_manager.cwd);

@@ -42,7 +42,7 @@ pub fn init_kernel_process() {
         Mutex::new(Arc::new(Mutex::new(MemorySet::new_empty()))),
         0,
         vec![],
-        Arc::new(Mutex::new(String::from("./").into())),
+        Arc::new(Mutex::new(String::from("/").into())),
         Arc::new(AtomicI32::new(0o022)),
     ));
 
